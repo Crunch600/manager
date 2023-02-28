@@ -1,6 +1,13 @@
-/*import org.junit.jupiter.api.Assertions;
+package ru.netology.qa54.manager.manager;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.netology.qa54.manager.domain.Book;
+import ru.netology.qa54.manager.domain.Product;
+import ru.netology.qa54.manager.domain.Smartphone;
+import ru.netology.qa54.manager.repository.ProductRepository;
+
 
 public class ProductManagerTest {
 
@@ -23,7 +30,7 @@ public class ProductManagerTest {
 
     public void shouldAllProducts() {
         Product[] expected = {product1, product2, product3, product4};
-        Product[] actual = manager.findAll();
+        Product[] actual = repo.getProducts();
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -40,4 +47,4 @@ public class ProductManagerTest {
 
 
 
-}*/
+}

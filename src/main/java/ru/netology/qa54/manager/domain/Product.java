@@ -1,3 +1,5 @@
+package ru.netology.qa54.manager.domain;
+
 public class Product {
 
     protected int id;

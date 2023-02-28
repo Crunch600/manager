@@ -1,4 +1,9 @@
-/*public class ProductManager {
+package ru.netology.qa54.manager.manager;
+
+import ru.netology.qa54.manager.domain.Product;
+import ru.netology.qa54.manager.repository.ProductRepository;
+
+public class ProductManager {
 
     private ProductRepository repo;
 
@@ -10,13 +15,10 @@
         repo.save(product);
     }
 
-    public Product[] findAll() {
-        return ProductRepository.products;
-    }
 
     public Product[] searchBy(String text) {
         Product[] result = new Product[0]; // тут будем хранить подошедшие запросу продукты
-        for (Product product : ProductRepository.findAll()) {
+        for (Product product : repo.getProducts()) {
             if (matches(product, text)) {
                 // "добавляем в конец" массива result продукт product
                 Product[] tmp = new Product[result.length + 1];
@@ -39,4 +41,4 @@
         }
     }
 
-}*/
+}

@@ -1,8 +1,13 @@
+package ru.netology.qa54.manager.repository;
+
+import ru.netology.qa54.manager.domain.Product;
+
 import java.util.Arrays;
 
 public class ProductRepository {
 
-    public static Product[] products = new Product[0];
+    public Product[] products = new Product[0];
+
 
     public void save(Product product) {
         Product[] tmp = new Product[products.length + 1];
@@ -12,6 +17,7 @@ public class ProductRepository {
         tmp[tmp.length - 1] = product;
         products = tmp;
     }
+
 
     public void removeToID(int id) {
         Product[] tmp = new Product[products.length - 1];
@@ -25,8 +31,10 @@ public class ProductRepository {
         }
     }
 
-    public static Product[] getProducts() {
+    public Product[] getProducts() {
+
         return products;
     }
+
 
 }

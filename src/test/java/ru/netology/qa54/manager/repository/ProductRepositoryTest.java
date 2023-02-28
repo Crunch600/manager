@@ -1,6 +1,11 @@
+package ru.netology.qa54.manager.repository;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.netology.qa54.manager.domain.Book;
+import ru.netology.qa54.manager.domain.Product;
+import ru.netology.qa54.manager.domain.Smartphone;
 
 public class ProductRepositoryTest {
     ProductRepository repo = new ProductRepository();
@@ -18,14 +23,14 @@ public class ProductRepositoryTest {
         repo.save(product4);
     }
 
-    @Test
+   @Test
 
     public void shouldSaveProducts() {
 
-        Product[] expected = {product1, product2, product3, product4};
-        Product[] actual = repo.getProducts();
-        Assertions.assertArrayEquals(expected, actual);
-    }
+       Product[] expected = {product1, product2, product3, product4};
+       Product[] actual = repo.getProducts();
+       Assertions.assertArrayEquals(expected, actual);
+   }
 
     @Test
     public void shouldRemoveId() {
