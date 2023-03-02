@@ -16,19 +16,24 @@ public class ProductManagerTest {
     Product product1 = new Book(1, "Сила подсознания", 1_000, "Джо Диспенза");
     Product product2 = new Smartphone(34, "Iphone 18", 30_000, "China");
     Product product3 = new Book(56, "Java explodes the brain", 1_500, "Филипп Воронов");
-    Product product4 = new Smartphone(89, "Samsung", 20_000, "China");
+    Product product4 = new Smartphone(89, "Samsung 18", 20_000, "China");
 
-    @BeforeEach
+   /* @BeforeEach
     void setup() {
         manager.add(product1);
         manager.add(product2);
         manager.add(product3);
         manager.add(product4);
-    }
+    }*/
 
     @Test
 
     public void shouldAllProducts() {
+        manager.add(product1);
+        manager.add(product2);
+        manager.add(product3);
+        manager.add(product4);
+
         Product[] expected = {product1, product2, product3, product4};
         Product[] actual = repo.getProducts();
 
@@ -37,8 +42,8 @@ public class ProductManagerTest {
 
     @Test
 
-    public void shouldSearch() {
-
+    public void shouldSearchWithOneProduct() {
+        manager.add(product1);
         Product[] expected = {product1};
         Product[] actual = manager.searchBy("под");
 
@@ -46,5 +51,24 @@ public class ProductManagerTest {
     }
 
 
+    @Test
+
+    public void shouldSearchWithTwoProducts() {
+        manager.add(product1);
+        manager.add(product2);
+        Product[] expected = new Product[] {product2};
+        Product[] actual = manager.searchBy("18");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+
+    public void shouldSearchWithoutProducts() {
+
+        Product[] expected = new Product[] {};
+        Product[] actual = manager.searchBy("18");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 
 }
