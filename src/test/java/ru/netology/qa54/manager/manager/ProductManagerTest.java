@@ -17,24 +17,22 @@ public class ProductManagerTest {
     Product product2 = new Smartphone(34, "Iphone 18", 30_000, "China");
     Product product3 = new Book(56, "Java explodes the brain", 1_500, "Филипп Воронов");
     Product product4 = new Smartphone(89, "Samsung 18", 20_000, "China");
+    Product product5 = new Smartphone(8, "Samsung 3", 60_000, "China");
 
-   /* @BeforeEach
+    @BeforeEach
     void setup() {
         manager.add(product1);
         manager.add(product2);
         manager.add(product3);
         manager.add(product4);
-    }*/
+        manager.add(product5);
+    }
 
     @Test
 
     public void shouldAllProducts() {
-        manager.add(product1);
-        manager.add(product2);
-        manager.add(product3);
-        manager.add(product4);
 
-        Product[] expected = {product1, product2, product3, product4};
+        Product[] expected = {product1, product2, product3, product4, product5};
         Product[] actual = repo.getProducts();
 
         Assertions.assertArrayEquals(expected, actual);
@@ -42,31 +40,38 @@ public class ProductManagerTest {
 
     @Test
 
-    public void shouldSearchWithOneProduct() {
-        manager.add(product1);
+    public void shouldSearchOneProduct() {
+
         Product[] expected = {product1};
-        Product[] actual = manager.searchBy("под");
+        Product[] actual = manager.searchBy("Сила подсознания");
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
-
     @Test
 
-    public void shouldSearchWithTwoProducts() {
-        manager.add(product1);
-        manager.add(product2);
-        Product[] expected = new Product[] {product2};
-        Product[] actual = manager.searchBy("18");
+    public void shouldSearchTwoProduct() {
+
+        Product[] expected = {product4, product5};
+        Product[] actual = manager.searchBy("Samsung");
 
         Assertions.assertArrayEquals(expected, actual);
     }
     @Test
 
-    public void shouldSearchWithoutProducts() {
+    public void shouldSearchSomeProduct() {
 
-        Product[] expected = new Product[] {};
-        Product[] actual = manager.searchBy("18");
+        Product[] expected = {product4, product5};
+        Product[] actual = manager.searchBy("Samsung");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNoSearchProduct() {
+
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("Honor");
 
         Assertions.assertArrayEquals(expected, actual);
     }
