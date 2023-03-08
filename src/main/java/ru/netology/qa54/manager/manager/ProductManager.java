@@ -8,10 +8,12 @@ public class ProductManager {
     private ProductRepository repo;
 
     public ProductManager(ProductRepository repo) {
+
         this.repo = repo;
     }
 
     public void add(Product product) {
+
         repo.save(product);
     }
 
